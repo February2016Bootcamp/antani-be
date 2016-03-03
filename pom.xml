@@ -11,6 +11,12 @@
 
     <modules>
         <module>
+            antani-adapters
+        </module>
+        <module>
+            antani-domain
+        </module>
+        <module>
             antani-main
         </module>
     </modules>
