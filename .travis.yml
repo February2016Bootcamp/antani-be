@@ -1,1 +1,7 @@
 language: java
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "93efe954-f4df-4a5e-8c23-7a892a2c6324"
+  app: antani-be
