@@ -8,7 +8,6 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -43,7 +42,7 @@ public class RetrieveCoursesTest
   public void oneCourse() throws Exception
   {
     final ArrayList<Course> courses = new ArrayList<Course>();
-    courses.add(new Course());
+    courses.add(new Course(null,null,0,null));
 
     context.checking(new Expectations()
     {{
