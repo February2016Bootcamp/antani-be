@@ -1,31 +1,21 @@
 package com.lastminute.bootcamp16.antani.domain;
 
+import com.lastminute.bootcamp16.antani.domain.ports.CoursesRepository;
+
 import java.util.List;
 
 public class RetrieveCourses
 {
-  private final List<Course> courses;
+  private CoursesRepository fileCoursesRepository;
 
-  public RetrieveCourses(List<Course> courses)
+  public RetrieveCourses(CoursesRepository coursesRepository)
   {
-    this.courses = courses;
+    fileCoursesRepository = coursesRepository;
   }
 
   public List<Course> all()
   {
-    return new FileCoursesRepository(courses).invoke();
+    return fileCoursesRepository.retrieveAll();
   }
 
-  private class FileCoursesRepository
-  {
-    private final List<Course> courses;
-
-    public FileCoursesRepository(List<Course> courses)
-    {
-
-      this.courses = courses;
-    }
-
-    public List<Course> invoke() {return this.courses;}
-  }
 }
