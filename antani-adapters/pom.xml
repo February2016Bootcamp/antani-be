@@ -14,4 +14,11 @@
     <artifactId>antani-adapters</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.lastminute.bootcamp16</groupId>
+            <artifactId>antani-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
