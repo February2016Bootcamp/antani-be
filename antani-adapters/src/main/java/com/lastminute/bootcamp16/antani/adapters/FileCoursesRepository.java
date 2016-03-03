@@ -5,17 +5,12 @@ import com.lastminute.bootcamp16.antani.domain.Course;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FileCoursesRepository implements com.lastminute.bootcamp16.antani.domain.ports.CoursesRepository
 {
   private String file;
-  private List<Course> courses;
-
-  public FileCoursesRepository(List<Course> courses)
-  {
-    this.courses = courses;
-  }
 
   public FileCoursesRepository(String file)
   {
@@ -26,23 +21,16 @@ public class FileCoursesRepository implements com.lastminute.bootcamp16.antani.d
   @Override
   public List<Course> retrieveAll()
   {
-
+    List<Course> courses= new ArrayList<>();
     if (file != null)
     {
       try (BufferedReader br = new BufferedReader(new FileReader(file)))
       {
-        String line = br.readLine();
-        while (line != null)
+
+        String line;
+        while ((line = br.readLine()) != null)
         {
-          String fields[] = line.split(",");
-
-          String code = fields[0];
-          String title = fields[1];
-          int price = Integer.parseInt(fields[2]);
-          String dateTime = fields[3];
-
-          Course course = new Course(code, title, price, dateTime);
-
+          courses.add(createCourse(line));
         }
       }
       catch (IOException e)
@@ -51,6 +39,18 @@ public class FileCoursesRepository implements com.lastminute.bootcamp16.antani.d
       }
     }
 
-    return this.courses;
+    return courses;
+  }
+
+  private Course createCourse(String line)
+  {
+    String fields[] = line.split(",");
+
+    String code = fields[0];
+    String title = fields[1];
+    int price = Integer.parseInt(fields[2]);
+    String dateTime = fields[3];
+
+    return new Course(code, title, price, dateTime);
   }
 }

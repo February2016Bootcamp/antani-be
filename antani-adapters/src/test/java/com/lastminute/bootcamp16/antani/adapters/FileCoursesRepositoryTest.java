@@ -1,12 +1,9 @@
 package com.lastminute.bootcamp16.antani.adapters;
 
-import com.lastminute.bootcamp16.antani.domain.Course;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class FileCoursesRepositoryTest
 {
@@ -14,9 +11,19 @@ public class FileCoursesRepositoryTest
   @Test
   public void noCourses(){
 
-    String file = "emplty.csv";
+    String file = "db/empty.csv";
 
-    FileCoursesRepository repository = new FileCoursesRepository(new ArrayList<Course>());
+    FileCoursesRepository repository = new FileCoursesRepository(file);
     assertThat(repository.retrieveAll().size(), is(0));
   }
+
+  @Test
+    public void oneCourses(){
+
+      String file = "db/one.csv";
+
+      FileCoursesRepository repository = new FileCoursesRepository(file);
+
+      assertThat(repository.retrieveAll().size(), is(1));
+    }
 }
