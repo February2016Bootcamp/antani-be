@@ -14,36 +14,14 @@ public class FileCoursesRepositoryTest
   @Test
   public void noCourses()
   {
-
-    String file = "db/empty.csv";
-
-    FileCoursesRepository repository = new FileCoursesRepository(file);
+    FileCoursesRepository repository = new FileCoursesRepository("db/empty.csv");
     assertThat(repository.retrieveAll().size(), is(0));
-  }
-
-  @Test
-  public void oneCourses()
-  {
-
-    String file = "db/one.csv";
-
-    FileCoursesRepository repository = new FileCoursesRepository(file);
-
-    final List<Course> courses = repository.retrieveAll();
-    assertThat(courses.size(), is(1));
-    final Course actual = courses.get(0);
-    final Course course = new Course("01", "Lingua Kinglon per principianti", 90, "2016-03-02T18:36:14+00:00");
-    assertThat(actual, is(course));
-
   }
 
   @Test
   public void twoCourses()
   {
-
-    String file = "db/two.csv";
-
-    FileCoursesRepository repository = new FileCoursesRepository(file);
+    FileCoursesRepository repository = new FileCoursesRepository("db/two.csv");
 
     final List<Course> courses = repository.retrieveAll();
 
