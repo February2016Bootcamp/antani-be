@@ -2,12 +2,10 @@ package com.lastminute.bootcamp16.antani;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.context.annotation.ComponentScan;
 
-@Controller
 @EnableAutoConfiguration
+@ComponentScan("com.lastminute.bootcamp16.antani")
 public class Application
 {
   public static void main(String[] args)
@@ -15,9 +13,4 @@ public class Application
     SpringApplication.run(Application.class, args);
   }
 
-  @RequestMapping("/")
-  @ResponseBody
-  String home(){
-    return "Hello Antani!";
-  }
 }
