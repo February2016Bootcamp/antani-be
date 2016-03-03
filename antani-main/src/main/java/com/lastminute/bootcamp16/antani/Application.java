@@ -1,11 +1,9 @@
 package com.lastminute.bootcamp16.antani;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@EnableAutoConfiguration
-@ComponentScan("com.lastminute.bootcamp16.antani")
+@SpringBootApplication
 public class Application
 {
   public static void main(String[] args)
