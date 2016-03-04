@@ -6,10 +6,10 @@ import com.lastminute.bootcamp16.antani.domain.Course;
 import com.lastminute.bootcamp16.antani.domain.RegisterParticipant;
 import com.lastminute.bootcamp16.antani.domain.RetrieveCourses;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.PathParam;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -41,7 +41,7 @@ public class CoursesController
   }
 
   @RequestMapping(value = "/courses/{code}/partecipants", method = POST)
-  public void register(@PathParam("code") String code)
+  public void register(@PathVariable String code)
   {
     registerParticipant.register(code);
   }
