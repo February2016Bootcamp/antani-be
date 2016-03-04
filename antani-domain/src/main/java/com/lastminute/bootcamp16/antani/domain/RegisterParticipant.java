@@ -15,4 +15,9 @@ public class RegisterParticipant
   {
       participantsRepository.register(courseId);
   }
+
+  public int count(String courseId)
+  {
+    return participantsRepository.countParticipants(courseId);
+  }
 }

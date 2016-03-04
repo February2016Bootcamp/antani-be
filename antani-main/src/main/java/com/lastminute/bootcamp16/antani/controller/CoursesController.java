@@ -45,4 +45,10 @@ public class CoursesController
   {
     registerParticipant.register(code);
   }
+
+  @RequestMapping(value = "/courses/{code}/participants", method = GET)
+  public int getCountParticipants(@PathVariable String code)
+  {
+    return registerParticipant.count(code);
+  }
 }
