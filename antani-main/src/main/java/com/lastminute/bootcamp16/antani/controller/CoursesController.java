@@ -40,7 +40,7 @@ public class CoursesController
     return all;
   }
 
-  @RequestMapping(value = "/courses/{code}/partecipants", method = POST)
+  @RequestMapping(value = "/courses/{code}/participants", method = POST)
   public void register(@PathVariable String code)
   {
     registerParticipant.register(code);
