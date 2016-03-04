@@ -2,15 +2,13 @@ package com.lastminute.bootcamp16.antani;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 public class AcceptanceTest
 {
@@ -23,13 +21,15 @@ public class AcceptanceTest
     context = SpringApplication.run(Application.class);
   }
 
-  @Test@Ignore
+  @Test
   public void retrieveAllCourses() throws Exception
   {
     final HtmlUnitDriver driver = new HtmlUnitDriver();
     driver.get("http://localhost:8080/courses");
 
-    assertThat(driver.getPageSource(), not(containsString("404")));
+    final String pageSource = driver.getPageSource();
+    assertThat(pageSource, not(containsString("404")));
+    assertThat(pageSource, not(containsString("500")));
   }
 
   @AfterClass

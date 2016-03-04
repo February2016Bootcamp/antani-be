@@ -4,7 +4,9 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Course
+import java.io.Serializable;
+
+public class Course implements Serializable
 {
   private final String code;
   private final String title;
@@ -36,5 +38,25 @@ public class Course
   public String toString()
   {
     return ToStringBuilder.reflectionToString(this);
+  }
+
+  public String getCode()
+  {
+    return code;
+  }
+
+  public String getTitle()
+  {
+    return title;
+  }
+
+  public int getPrice()
+  {
+    return price;
+  }
+
+  public String getDateTime()
+  {
+    return dateTime;
   }
 }
