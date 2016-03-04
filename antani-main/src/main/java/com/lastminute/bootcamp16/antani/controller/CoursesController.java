@@ -21,7 +21,7 @@ public class CoursesController
   }
   public CoursesController()
    {
-     this.retrieveCourses = new RetrieveCourses(new FileCoursesRepository("db/two.csv"));
+     this.retrieveCourses = new RetrieveCourses(new FileCoursesRepository("db.csv"));
    }
 
 

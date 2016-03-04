@@ -2,10 +2,7 @@ package com.lastminute.bootcamp16.antani.adapters;
 
 import com.lastminute.bootcamp16.antani.domain.Course;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +23,11 @@ public class FileCoursesRepository implements com.lastminute.bootcamp16.antani.d
     List<Course> courses= new ArrayList<>();
     if (file != null)
     {
-      try (BufferedReader br = new BufferedReader(new FileReader(new File(ClassLoader.getSystemResource(file).toURI()))))
+
+
+
+      Reader reader = new InputStreamReader(getClass().getResourceAsStream("/" + file));
+      try (BufferedReader br = new BufferedReader(reader))
       {
 
         String line;
@@ -38,10 +39,6 @@ public class FileCoursesRepository implements com.lastminute.bootcamp16.antani.d
       catch (IOException e)
       {
         throw new RuntimeException(e);
-      }
-      catch (URISyntaxException e)
-      {
-        e.printStackTrace();
       }
     }
 

@@ -10,6 +10,8 @@ buildNumber.properties
 .idea/
 *.iml
 *.iws
-/.settings/
-/.project
-/.DS_Store
+.settings/
+.project
+.DS_Store
+.classpath
+
