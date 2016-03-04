@@ -1,14 +1,13 @@
 package com.lastminute.bootcamp16.antani.domain;
 
-import com.lastminute.bootcamp16.antani.domain.ports.ParticipantRepository;
+import com.lastminute.bootcamp16.antani.domain.ports.ParticipantsRepository;
 
 public class RegisterParticipant
 {
-  private ParticipantRepository participantsRepository;
+  private ParticipantsRepository participantsRepository;
 
-  public RegisterParticipant(ParticipantRepository participantsRepository)
+  public RegisterParticipant(ParticipantsRepository participantsRepository)
   {
-
     this.participantsRepository = participantsRepository;
   }
 
