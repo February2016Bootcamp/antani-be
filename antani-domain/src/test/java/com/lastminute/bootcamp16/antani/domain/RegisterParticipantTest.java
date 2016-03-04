@@ -7,26 +7,32 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class RegisterParticipantTest
-{
+public class RegisterParticipantTest {
   @Rule
   public final JUnitRuleMockery context = new JUnitRuleMockery();
   private ParticipantsRepository participantsRepository;
 
   @Before
-  public void setUp() throws Exception
-  {
+  public void setUp() throws Exception {
     participantsRepository = context.mock(ParticipantsRepository.class);
   }
 
   @Test
-  public void registerAParticipant() throws Exception
-  {
-    context.checking(new Expectations()
-    {{
-        oneOf(participantsRepository).register("01");
+  public void registerAParticipant() throws Exception {
+    context.checking(new Expectations() {{
+      oneOf(participantsRepository).register("01");
     }});
 
     new RegisterParticipant(participantsRepository).register("01");
+  }
+
+
+  @Test
+  public void registerAParticipantWithMail() throws Exception {
+    context.checking(new Expectations() {{
+      oneOf(participantsRepository).registerMail("01", "antonino@ciao.it");
+    }});
+
+    new RegisterParticipant(participantsRepository).registerMail("01", "antonino@ciao.it");
   }
 }

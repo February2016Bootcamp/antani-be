@@ -31,4 +31,12 @@ public class InMemoryParticipantsRepositoryTest {
     assertThat(repository.countParticipants("02"), is(1));
   }
 
+
+  @Test
+  public void onePartecipantWithEmail() {
+    ParticipantsRepository repository = new InMemoryParticipantsRepository();
+    repository.registerMail("01", "email@email.it");
+    assertThat(repository.countParticipants("01"), is(1));
+  }
+
 }

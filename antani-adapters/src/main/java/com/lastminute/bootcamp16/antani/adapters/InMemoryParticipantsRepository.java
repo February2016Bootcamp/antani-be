@@ -1,12 +1,15 @@
 package com.lastminute.bootcamp16.antani.adapters;
 
 import com.lastminute.bootcamp16.antani.domain.ports.ParticipantsRepository;
+import net.sf.cglib.core.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InMemoryParticipantsRepository implements ParticipantsRepository {
-  private Map<String, Integer> participants;
+  private Map<String, List<String>> participants;
 
   public InMemoryParticipantsRepository() {
     participants = new HashMap<>();
@@ -14,14 +17,25 @@ public class InMemoryParticipantsRepository implements ParticipantsRepository {
 
   @Override
   public void register(String courseId) {
-    Integer count = participants.get(courseId);
-    if (count == null) count = 0;
-    participants.put(courseId, ++count);
+    registerMail(courseId, "-");
   }
 
   @Override
   public int countParticipants(String courseId) {
-    Integer count = participants.get(courseId);
-    return count == null ? 0 : count;
+    List<String> participantsForCourse = participants.get(courseId);
+    if (participantsForCourse == null) {
+      return 0;
+    }
+    return participantsForCourse.size();
+  }
+
+  @Override
+  public void registerMail(String courseCode, String email) {
+    List<String> participantsForCourse = participants.get(courseCode);
+    if (participantsForCourse == null) {
+      participantsForCourse = new ArrayList<String>();
+      participants.put(courseCode, participantsForCourse);
+    }
+    participantsForCourse.add(email);
   }
 }

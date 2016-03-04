@@ -5,4 +5,6 @@ public interface ParticipantsRepository
   void register(String courseId);
 
   int countParticipants(String courseId);
+
+  void registerMail(String courseCode, String email);
 }
